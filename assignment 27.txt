@@ -287,4 +287,53 @@ int main()
     return 0;
 }
 
-Ans=
+Ans=10->
+
+#include<iostream>
+using namespace std;
+
+class Matrix
+{
+private:
+    int a[3][3],j,k;
+public:
+    void showdata()
+    {
+        for(j=0;j<3;j++)
+        {
+            for(k=0;k<3;k++)
+                cout<<a[j][k]<<"  ";
+                cout<<endl;
+        }
+    }
+    void getdata()
+    {
+        cout<<endl<<" Enter Data "<<endl;
+        for(j=0;j<3;j++)
+        {
+            for(k=0;k<3;k++)
+                cin>>a[j][k];
+            cout<<endl;
+        }
+    }
+    Matrix operator +(Matrix c)
+    {
+        Matrix m;
+        for(j=0;j<3;j++)
+        {
+            for(k=0;k<3;k++)
+                m.a[j][k]=a[j][k]+c.a[j][k];
+        }
+        return m;
+    }
+};
+
+int main()
+{
+    Matrix m1,m2,m3;
+    m1.getdata();
+    m2.getdata();
+    m3=m1+m2;
+    m3.showdata();
+    return 0;
+}
