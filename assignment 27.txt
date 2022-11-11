@@ -1,0 +1,290 @@
+Ans=1->
+#include<iostream>
+using namespace std;
+
+class complex
+{
+private:
+    int a,b;
+public:
+    complex operator +(complex c2)
+    {
+        complex temp;
+        temp.a=a+c2.a;
+        temp.b=b+c2.b;
+        return temp;
+    }
+    complex operator -(complex c2)
+    {
+        complex temp;
+        temp.a=a-c2.a;
+        temp.b=b-c2.b;
+        return temp;
+    }
+    complex operator *(complex c2)
+    {
+        complex temp;
+        temp.a=a*c2.a;
+        temp.b=b*c2.b;
+        return temp;
+    }
+    complex operator ==(complex c2)
+    {
+        complex temp;
+        temp.a=a==c2.a;
+        temp.b=b==c2.b;
+        return temp;
+    }
+    void display()
+    {
+        cout<<endl<<" a="<<a<<" b="<<b<<endl;
+    }
+    getdata(int aa,int bb)
+    {
+        a=aa;
+        b=bb;
+    }
+};
+
+int main()
+{
+    complex c1,c2,c3;
+    c1.getdata(5,6);
+    c2.getdata(5,4);
+    c3=c1+c2;
+    c3.display();
+    c3=c1-c2;
+    c3.display();
+    c3=c1*c2;
+    c3.display();
+    c3=c1==c2;
+    c3.display();
+    return 0;
+}
+
+Ans=2->
+
+#include<iostream>
+using namespace std;
+
+class overunary
+{
+private:
+    int a;
+public:
+    overunary operator ++()
+    {
+        overunary t;
+        t.a=++a;
+        return t;
+    }
+    overunary operator ++(int)
+    {
+        overunary t;
+        t.a=a++;
+        return t;
+    }
+    void display()
+    {
+        cout<<endl<<a<<endl;
+    }
+    void setdata(int aa)
+    {
+        a=aa;
+    }
+    overunary operator --()
+    {
+        overunary t;
+        t.a=--a;
+        return t;
+    }
+    overunary operator --(int)
+    {
+        overunary t;
+        t.a=a--;
+        return t;
+    }
+};
+
+int main()
+{
+    overunary c1,c2,c3,c4,c5;
+    c1.setdata(5);
+    c1.display();
+    c2=++c1;
+    c2.display();
+    c3=c2++;
+    c3.display();
+    c4=--c3;
+    c4.display();
+    c5=c4--;
+    c5.display();
+    return 0;
+}
+
+Ans=3->
+
+#include<iostream>
+using namespace std;
+class B;
+class A
+{
+private:
+    int a;
+    public:
+    void setdata(int x){a=x;}
+    friend void add(A,B);
+};
+class B
+{
+private:
+    int b;
+public:
+    void setdata(int y){b=y;}
+    friend void add(A,B);
+};
+void add(A aa,B bb)
+{
+    cout<<" Sum is "<<aa.a+bb.b;
+}
+
+int main()
+{
+    A aa;
+    B bb;
+    aa.setdata(8);
+    bb.setdata(4);
+    add(aa,bb);
+    return 0;
+}
+
+Ans=5->
+#include<iostream>
+using namespace std;
+class Numbers
+{
+private:
+    int x,y,z;
+public:
+    Numbers operator-()
+    {
+        Numbers ab;
+        ab.x=-x;
+        ab.y=-y;
+        ab.z=-z;
+        return(ab);
+    }
+    void getdata(int xx,int yy,int zz)
+    {
+        x=xx;
+        y=yy;
+        z=zz;
+    }
+    void showdata()
+    {
+        cout<<endl<<x<<endl<<y<<endl<<z<<endl;
+    }
+};
+
+int main()
+{
+    Numbers n1,n2,n3;
+    n1.getdata(3,4,5);
+    n2=-n1;
+
+    n1.showdata();
+    n2.showdata();
+}
+
+Ans=4->
+
+#include<iostream>
+using namespace std;
+
+class time
+{
+private:
+    int Ho,Mi,Se;
+public:
+    void display()
+    {
+        cout<<endl<<"Hours= 
+        "<<Ho<<endl<<"Minute= "<<Mi<<endl<<"Second= "<<Se<<endl;
+    }
+    void getdata(int hh,int mm,int ss)
+    {
+        Ho=hh;
+        Mi=mm;
+        Se=ss;
+    }
+    time operator==(time c)
+    {
+        time t;
+        t.Ho=Ho==c.Ho;
+        t.Mi=Mi==c.Mi;
+        t.Se=Se==c.Se;
+        return(t);
+    }
+};
+
+int main()
+{
+    time c1,c2,c3;
+
+    c1.getdata(5,12,1996);
+    c2.getdata(5,12,1999);
+    c3=c1==c2;
+    c3.display();
+}
+
+Ans=8->
+#include<iostream>
+using namespace std;
+
+class Matrix
+{
+private:
+    int a[3][3],j,k;
+public:
+    void showdata()
+    {
+        for(j=0;j<3;j++)
+        {
+            for(k=0;k<3;k++)
+                cout<<a[j][k];
+                    cout<<endl;
+        }
+    }
+    void getdata()
+    {
+        cout<<endl<<" Enter Data "<<endl;
+        for(j=0;j<3;j++)
+        {
+            for(k=0;k<3;k++)
+                cin>>a[j][k];
+            cout<<endl;
+        }
+    }
+    Matrix operator -()
+    {
+        Matrix m;
+        for(j=0;j<3;j++)
+        {
+            for(k=0;k<3;k++)
+                m.a[j][k]=-a[j][k];
+                    cout<<endl;
+        }
+        return m;
+    }
+};
+
+int main()
+{
+    Matrix m1,m2;
+    m1.getdata();
+    m2=-m1;
+    m2.showdata();
+    return 0;
+}
+
+Ans=
